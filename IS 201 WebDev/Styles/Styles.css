@@ -1,0 +1,53 @@
+body { 
+    /* Setting the default font settings */
+        font-family: Arial, sans-serif, helvetica; 
+        font-size: 15px;
+        color: #302f2f;
+        background-color: rgb(190, 190, 236) ;
+    
+        }
+ li {
+    /* Setting the font settings for list items */
+     font-size: 13px;
+     font-style: italic;
+     font-weight: normal;
+        }
+ a {
+    /* Settings for links and when I hover over or visit links*/
+     text-decoration: none;
+     color: maroon;
+        } 
+ a:hover { 
+    text-decoration: underline;
+    /* font-weight: bold; */
+    } 
+a:visited {
+    color: blue;
+        }            
+.resumeListHeading {
+    font-weight: bold;
+    font-style: normal ;
+        }
+.underline {text-decoration: underline;}
+.bold {font-weight: bold;}
+.justify {text-align: justify;}
+
+.homebg {
+    background-image: url('../Images/Blue_Background.jpg');
+    background-position: Center Center;
+        }
+
+
+        /* This next part is just so I could get practice with the box model
+        I'm going to comment this out as well */
+/* .box1 {
+    border-width: 1px;
+    border-style: solid;
+    border-color: gray;
+}
+.box2 {
+    padding: 5px;
+}
+.box3 {
+margin: 50px;
+} */
