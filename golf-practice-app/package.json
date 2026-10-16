@@ -1,0 +1,18 @@
+{
+  "name": "golf-practice-app",
+  "version": "0.2.0",
+  "description": "Plan, log, and track golf practice sessions in the browser.",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": "22.x"
+  },
+  "scripts": {
+    "dev": "node --env-file-if-exists=.env scripts/dev-server.js",
+    "test": "node --env-file-if-exists=.env --test --test-concurrency=1 tests/*.test.js"
+  },
+  "dependencies": {
+    "postgres": "3.4.9"
+  },
+  "license": "MIT"
+}

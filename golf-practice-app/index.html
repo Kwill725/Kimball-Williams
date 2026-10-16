@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Golf Practice</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script type="module" src="js/app.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <h1>⛳ Golf Practice</h1>
+    <p class="muted">Plan it. Log it. Get better.</p>
+    <p id="sync-status" class="sync-status" data-status="busy" aria-live="polite">Connecting…</p>
+  </header>
+
+  <main>
+    <section class="stats" aria-label="Practice summary">
+      <div class="card stat"><span class="stat-label">Sessions</span><span id="stat-sessions" class="stat-value">0</span></div>
+      <div class="card stat"><span class="stat-label">Practice time</span><span id="stat-time" class="stat-value">0m</span></div>
+      <div class="card stat"><span class="stat-label">Avg rating</span><span id="stat-rating" class="stat-value">–</span></div>
+      <div class="card stat"><span class="stat-label">Streak</span><span id="stat-streak" class="stat-value">0 days</span></div>
+    </section>
+
+    <div class="layout">
+      <section class="card" aria-labelledby="log-heading">
+        <h2 id="log-heading">Log a session</h2>
+        <form id="session-form" novalidate>
+          <input type="hidden" name="drillId" value="">
+          <div class="row">
+            <label>Date<input type="date" name="date" id="date" required></label>
+            <label>Focus area<select name="focus" id="focus" required></select></label>
+          </div>
+          <div class="row">
+            <label>Minutes<input type="number" name="minutes" min="1" max="600" step="1" required></label>
+            <label>Balls hit<input type="number" name="balls" min="0" max="2000" step="1" placeholder="optional"></label>
+          </div>
+          <fieldset class="rating-input">
+            <legend>How did it go?</legend>
+            <label><input type="radio" name="rating" value="1">1</label>
+            <label><input type="radio" name="rating" value="2">2</label>
+            <label><input type="radio" name="rating" value="3" checked>3</label>
+            <label><input type="radio" name="rating" value="4">4</label>
+            <label><input type="radio" name="rating" value="5">5</label>
+          </fieldset>
+          <label>Notes<textarea name="notes" rows="3" placeholder="What clicked? What needs work?"></textarea></label>
+          <ul id="form-errors" class="errors" aria-live="polite"></ul>
+          <button type="submit" class="btn">Save session</button>
+        </form>
+      </section>
+
+      <section class="card" aria-labelledby="breakdown-heading">
+        <h2 id="breakdown-heading">Time by focus area</h2>
+        <ul id="focus-breakdown" class="bars"></ul>
+      </section>
+    </div>
+
+    <section aria-labelledby="drills-heading">
+      <div class="section-head">
+        <h2 id="drills-heading">Drill library</h2>
+        <select id="drill-filter" aria-label="Filter drills by focus area"></select>
+      </div>
+      <ul id="drill-list" class="grid"></ul>
+    </section>
+
+    <section aria-labelledby="history-heading">
+      <div class="section-head">
+        <h2 id="history-heading">History</h2>
+        <div class="actions">
+          <button type="button" id="export-btn" class="btn secondary small">Export</button>
+          <label class="btn secondary small">Import<input type="file" id="import-input" accept="application/json" hidden></label>
+        </div>
+      </div>
+      <p id="history-empty" class="muted">No sessions yet — log your first one above.</p>
+      <ul id="history-list" class="stack"></ul>
+    </section>
+  </main>
+
+  <footer>
+    <section class="card sync" aria-labelledby="sync-heading">
+      <h2 id="sync-heading">Sync across devices</h2>
+      <p class="muted">
+        Your sessions are saved to the cloud under a private sync code. To see them on another phone or computer,
+        copy your code and choose "Use a code from another device" there. Keep it secret — anyone with the code can see and edit your log.
+      </p>
+      <div class="actions">
+        <button type="button" id="show-code-btn" class="btn secondary small">Show my sync code</button>
+        <button type="button" id="use-code-btn" class="btn secondary small">Use a code from another device</button>
+      </div>
+      <input id="sync-code" class="sync-code" readonly hidden aria-label="Your sync code">
+    </section>
+  </footer>
+</body>
+</html>
