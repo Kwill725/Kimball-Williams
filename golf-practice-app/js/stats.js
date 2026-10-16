@@ -2,6 +2,8 @@
 // Kept free of DOM/storage access so they can be unit tested in Node.
 
 const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
+const DRILL_ID_RE = /^[a-z0-9-]{1,64}$/;
+export const MAX_NOTES = 2000;
 
 /**
  * Validate and normalize raw form input into a session object.
@@ -21,18 +23,12 @@ export function validateSession(input, validFocusIds) {
   if (!Number.isInteger(minutes) || minutes < 1 || minutes > 600) errors.push("Duration must be 1–600 minutes.");
   if (!Number.isInteger(balls) || balls < 0 || balls > 2000) errors.push("Balls hit must be 0–2000.");
   if (!Number.isInteger(rating) || rating < 1 || rating > 5) errors.push("Rating must be 1–5.");
+  if (notes.length > MAX_NOTES) errors.push(`Notes must be ${MAX_NOTES} characters or fewer.`);
 
   if (errors.length) return { errors };
+  const drillId = typeof input.drillId === "string" && DRILL_ID_RE.test(input.drillId) ? input.drillId : null;
   return {
-    session: {
-      date,
-      focus,
-      minutes,
-      balls,
-      rating,
-      notes,
-      drillId: input.drillId || null,
-    },
+    session: { date, focus, minutes, balls, rating, notes, drillId },
   };
 }
 

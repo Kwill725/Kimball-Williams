@@ -11,6 +11,7 @@
   <header class="site-header">
     <h1>⛳ Golf Practice</h1>
     <p class="muted">Plan it. Log it. Get better.</p>
+    <p id="sync-status" class="sync-status" data-status="busy" aria-live="polite">Connecting…</p>
   </header>
 
   <main>
@@ -75,6 +76,19 @@
     </section>
   </main>
 
-  <footer class="muted">Data is stored in your browser. Use Export to back it up.</footer>
+  <footer>
+    <section class="card sync" aria-labelledby="sync-heading">
+      <h2 id="sync-heading">Sync across devices</h2>
+      <p class="muted">
+        Your sessions are saved to the cloud under a private sync code. To see them on another phone or computer,
+        copy your code and choose "Use a code from another device" there. Keep it secret — anyone with the code can see and edit your log.
+      </p>
+      <div class="actions">
+        <button type="button" id="show-code-btn" class="btn secondary small">Show my sync code</button>
+        <button type="button" id="use-code-btn" class="btn secondary small">Use a code from another device</button>
+      </div>
+      <input id="sync-code" class="sync-code" readonly hidden aria-label="Your sync code">
+    </section>
+  </footer>
 </body>
 </html>

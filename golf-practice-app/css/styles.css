@@ -165,3 +165,12 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--green); out
 @media (max-width: 720px) {
   .layout, .row { grid-template-columns: 1fr; }
 }
+
+/* Sync */
+.sync-status { margin: -8px 0 16px; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 6px; }
+.sync-status::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--muted); }
+.sync-status[data-status="ok"]::before { background: var(--green); }
+.sync-status[data-status="warn"]::before { background: #e0a800; }
+.tag.warn { background: rgba(224, 168, 0, 0.15); color: #9a7400; }
+.sync .actions { flex-wrap: wrap; }
+.sync-code { margin-top: 12px; width: 100%; font-family: ui-monospace, monospace; }
